@@ -1,0 +1,38 @@
+<odoo>
+  <template id="assets_frontend" inherit_id="website.assets_frontend" name="Shop">
+    <xpath expr="." position="inside">
+            <script type="text/javascript" src="/odoo_webapp/static/src/js/webapp.js"></script>
+            <link rel="manifest" href="/odoo_webapp/static/src/manifest.json" />
+
+            <!-- Android Service workers -->
+            <script>
+              if ('serviceWorker' in navigator) {
+
+                  console.log("Will the service worker register?");
+
+                  navigator.serviceWorker.register('/odoo_webapp/static/src/js/service-worker.js')
+                    .then(function(reg){
+
+                      console.log("Yes, it did.");
+
+                  }).catch(function(err) {
+
+                      console.log("No it didn't. This happened:", err)
+
+                  });
+              }
+            </script>
+
+            <!-- IOS add to homescreen helper -->
+            <link rel="apple-touch-icon" href="/odoo_webapp/static/src/img/apple-touch-icon.png" />
+            <link rel="apple-touch-icon-precomposed" href="../images/icon_calendar.png" />
+            <script type="text/javascript" src="/odoo_webapp/static/src/mobile-bookmark-bubble/bookmark_bubble.js"></script>
+            <script type="text/javascript" src="/odoo_webapp/static/src/js/bookmarkbubble.js"></script>
+    </xpath>
+  </template>
+  <!-- <template id="assets_frontend" inherit_id="web.layout" name="Shop">
+    <xpath expr="//head" position="inside">
+          <link rel="apple-touch-icon" href="/odoo_webapp/static/src/img/apple-touch-icon.png" />
+    </xpath>
+  </template> -->
+</odoo>
